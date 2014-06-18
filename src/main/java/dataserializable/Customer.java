@@ -18,20 +18,20 @@ public class Customer implements DataSerializable {
     String emailAddress;
     long[] longArray;
 
-    public void readData( ObjectDataInput in ) throws IOException{
-        name = in.readUTF();
-        birthday = new Date( in.readLong() );
-        gender = Sex.valueOf( in.readUTF() );
-        emailAddress = in.readUTF();
-        longArray = in.readLongArray();
+    public void readData( ObjectDataInput objectDataInput ) throws IOException{
+        name = objectDataInput.readUTF();
+        birthday = new Date( objectDataInput.readLong() );
+        gender = Sex.valueOf( objectDataInput.readUTF() );
+        emailAddress = objectDataInput.readUTF();
+        longArray = objectDataInput.readLongArray();
     }
 
-    public void writeData( ObjectDataOutput out ) throws IOException{
-        out.writeUTF( name );
-        out.writeLong( birthday.getTime() );
-        out.writeUTF( gender.toString() );
-        out.writeUTF( emailAddress );
-        out.writeLongArray( longArray );
+    public void writeData( ObjectDataOutput objectDataOutput ) throws IOException{
+        objectDataOutput.writeUTF( name );
+        objectDataOutput.writeLong( birthday.getTime() );
+        objectDataOutput.writeUTF( gender.toString() );
+        objectDataOutput.writeUTF( emailAddress );
+        objectDataOutput.writeLongArray( longArray );
     }
 
 }
