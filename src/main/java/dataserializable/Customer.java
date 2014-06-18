@@ -19,11 +19,19 @@ public class Customer implements DataSerializable {
     long[] longArray;
 
     public void readData( ObjectDataInput in ) throws IOException{
-
+        name = in.readUTF();
+        birthday = new Date( in.readLong() );
+        gender = Sex.valueOf( in.readUTF() );
+        emailAddress = in.readUTF();
+        longArray = in.readLongArray();
     }
 
     public void writeData( ObjectDataOutput out ) throws IOException{
-
+        out.writeUTF( name );
+        out.writeLong( birthday.getTime() );
+        out.writeUTF( gender.toString() );
+        out.writeUTF( emailAddress );
+        out.writeLongArray( longArray );
     }
 
 }
