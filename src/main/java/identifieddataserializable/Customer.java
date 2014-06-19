@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
  */
 
-public class Customer implements IdentifiedDataSerializable {
+public class Customer implements IdentifiedDataSerializable
+{
     public enum Sex { MALE, FEMALE }
     String name;
     Date birthday;
@@ -52,5 +53,4 @@ public class Customer implements IdentifiedDataSerializable {
         objectDataOutput.writeInt(longArray.size());
         for(int i = 0; i < longArray.size(); i++) objectDataOutput.writeLong(longArray.get(i));
     }
-
 }
