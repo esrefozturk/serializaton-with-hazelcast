@@ -1,18 +1,18 @@
-/**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014. Cool.
- */
-
 package externalizable;
 
+import java.util.Date;
+import java.io.IOException;
 import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
-import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.lang.ClassNotFoundException;
 import java.util.ArrayList;
+
+/**
+ * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
+*/
 
 public class Customer implements Externalizable
 {

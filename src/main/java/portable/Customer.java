@@ -1,7 +1,3 @@
-/**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
- */
-
 package portable;
 
 import com.hazelcast.nio.serialization.Portable;
@@ -13,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.io.IOException;
 
-public class Customer implements Portable
-{
+/**
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ */
+
+public class Customer implements Portable {
     public enum Sex { MALE, FEMALE }
     String name;
     Date birthday;

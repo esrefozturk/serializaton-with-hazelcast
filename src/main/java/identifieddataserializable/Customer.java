@@ -1,7 +1,3 @@
-/**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
- */
-
 package identifieddataserializable;
 
 import com.hazelcast.nio.ObjectDataInput;
@@ -13,8 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Customer implements IdentifiedDataSerializable
-{
+/**
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ */
+
+public class Customer implements IdentifiedDataSerializable {
     public enum Sex { MALE, FEMALE }
     String name;
     Date birthday;
