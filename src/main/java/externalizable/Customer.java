@@ -1,26 +1,21 @@
 package externalizable;
 
-import com.hazelcast.nio.ObjectDataOutput;
-import com.hazelcast.nio.ObjectDataInput;
-import com.hazelcast.nio.ObjectDataOutput;
-import com.hazelcast.nio.serialization.DataSerializable;
 import java.util.Date;
 import java.io.IOException;
 import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
-import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.lang.ClassNotFoundException;
 import java.util.ArrayList;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
 */
 
-public class Customer implements Externalizable {
+public class Customer implements Externalizable
+{
     public enum Sex { MALE, FEMALE }
     String name;
     Date birthday;
