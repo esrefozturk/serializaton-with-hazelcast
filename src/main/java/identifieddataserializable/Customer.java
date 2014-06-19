@@ -1,7 +1,3 @@
-/**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
- */
-
 package identifieddataserializable;
 
 import com.hazelcast.nio.ObjectDataInput;
@@ -10,6 +6,10 @@ import com.hazelcast.nio.serialization.IdentifiedDataSerializable;
 
 import java.io.IOException;
 import java.util.Date;
+
+/**
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ */
 
 public class Customer implements IdentifiedDataSerializable {
     public enum Sex { MALE, FEMALE }
