@@ -23,27 +23,27 @@ public class Customer implements Externalizable
     String emailAddress;
     ArrayList<Long> longArray;
 
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException
+    public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException
     {
-        name = in.readLine();
-        birthday = new Date(Long.valueOf(in.readLine()).longValue());
-        gender = Sex.valueOf(in.readLine());
-        emailAddress = in.readLine();
-        int len = in.readInt();
+        name = objectInput.readLine();
+        birthday = new Date(Long.valueOf(objectInput.readLine()).longValue());
+        gender = Sex.valueOf(objectInput.readLine());
+        emailAddress = objectInput.readLine();
+        int len = objectInput.readInt();
         longArray = new ArrayList<Long>(len);
         Long tmp;
-        for(int i = 0; i < len; i++)  {  tmp = in.readLong(); longArray.add(tmp); }
+        for(int i = 0; i < len; i++)  {  tmp = objectInput.readLong(); longArray.add(tmp); }
     }
 
-    public void writeExternal(ObjectOutput out) throws IOException
+    public void writeExternal(ObjectOutput objectOutput) throws IOException
     {
-        out.writeChars(name);
+        objectOutput.writeChars(name);
         Format formatter = new SimpleDateFormat("yyyy-dd-MM hh:mm:ss");
         String s = formatter.format(birthday);
-        out.writeChars(s);
-        out.writeChars(gender.toString());
-        out.writeChars(emailAddress);
-        out.writeInt(longArray.size());
-        for(int i = 0; i < longArray.size(); i++) out.writeLong(longArray.get(i));
+        objectOutput.writeChars(s);
+        objectOutput.writeChars(gender.toString());
+        objectOutput.writeChars(emailAddress);
+        objectOutput.writeInt(longArray.size());
+        for(int i = 0; i < longArray.size(); i++) objectOutput.writeLong(longArray.get(i));
     }
 }
