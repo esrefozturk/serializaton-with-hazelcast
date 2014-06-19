@@ -15,9 +15,7 @@ public class Customer implements Serializable {
     String emailAddress;
     long[] longArray;
 
-   public Customer(){
-
-   }
+    public Customer(){}
 
     public Customer( String name , Date birthday , Sex gender , String emailAddress , long[] longArray ){
         this.name = name;
@@ -26,4 +24,5 @@ public class Customer implements Serializable {
         this.emailAddress = emailAddress;
         this.longArray = longArray;
     }
+
 }

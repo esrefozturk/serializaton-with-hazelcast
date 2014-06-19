@@ -14,9 +14,7 @@ public class Customer {
     String emailAddress;
     long[] longArray;
 
-    public Customer(){
-
-    }
+    public Customer(){}
 
     public Customer( String name , Date birthday , Sex gender , String emailAddress , long[] longArray ){
         this.name = name;

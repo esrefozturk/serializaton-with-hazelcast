@@ -22,15 +22,17 @@ public class test {
         config = new Config();
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
-
-        customer = new Customer("ali veli" , new Date(93,8,4), Customer.Sex.MALE , "ali@veli.com",new long[]{7,8,9,1,2,3});
+        customer = new Customer("ali veli" , new Date(93,8,4), Customer.Sex.MALE ,
+                                "ali@veli.com",new long[]{7,8,9,1,2,3});
 
         customerMap.set(0, customer);
         Customer newCustomer = customerMap.get(0);
+
         System.out.println("Name:" + newCustomer.name);
         System.out.println("Birthday:" + newCustomer.birthday);
         System.out.println("Gender:" + newCustomer.gender);
-        System.out.println("EmailAdress:" + newCustomer.emailAddress);
+        System.out.println("EmailAddress:" + newCustomer.emailAddress);
         System.out.println("LongArray:" + Arrays.toString( newCustomer.longArray ) );
     }
+
 }

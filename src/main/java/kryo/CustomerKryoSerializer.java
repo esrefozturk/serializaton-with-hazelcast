@@ -42,10 +42,6 @@ public class CustomerKryoSerializer implements StreamSerializer<Customer> {
         return 1;
     }
 
-    public void destroy(){
-
-    }
-
-
+    public void destroy(){}
 
 }
