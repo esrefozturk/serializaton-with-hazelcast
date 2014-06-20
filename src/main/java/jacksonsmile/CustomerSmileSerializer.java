@@ -11,15 +11,17 @@ import org.codehaus.jackson.smile.SmileFactory;
 public class CustomerSmileSerializer implements ByteArraySerializer<Customer> {
 
     public byte[] write(Customer customer) throws java.io.IOException{
+        System.out.println("I am writing a Customer");
         return customer.name.getBytes();
     }
 
     public Customer read(byte[] bytes) throws java.io.IOException{
+        System.out.println("I am reading a Customer");
         return new Customer( new String(bytes) );
     }
 
     public int getTypeId(){
-        return 0;
+        return 1;
     }
 
     public void destroy(){}

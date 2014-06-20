@@ -1,6 +1,9 @@
 package serializable;
 
 import java.io.Serializable;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Date;
 
 /**
@@ -23,6 +26,16 @@ public class Customer implements Serializable {
         this.gender = gender;
         this.emailAddress = emailAddress;
         this.longArray = longArray;
+    }
+
+    private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException{
+        System.out.println("I am reading a Customer");
+        objectInputStream.defaultReadObject();
+    }
+
+    private void writeObject(ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException{
+        System.out.println("I am writing a Customer");
+        objectOutputStream.defaultWriteObject();
     }
 
 }
