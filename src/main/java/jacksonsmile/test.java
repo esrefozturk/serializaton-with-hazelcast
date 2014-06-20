@@ -16,9 +16,9 @@ public class test {
 
     public static void main( String[] args ){
         Benchmark b = new Benchmark();
-        System.out.println("1000 set:"+ b.getWritePerformance()+"ms");
-        System.out.println("1000 get:"+ b.getReadPerformance()+"ms");
-        System.out.println("Average size:"+ b.getAverageSize()+"bytes");
+        System.out.println("1000 set: "+ b.getWritePerformance()+" ms");
+        System.out.println("1000 get: "+ b.getReadPerformance()+" ms");
+        System.out.println("Average size: "+ b.getAverageSize()+" bytes");
 
 
     }
