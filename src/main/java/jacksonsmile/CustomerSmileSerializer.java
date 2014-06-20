@@ -11,12 +11,12 @@ import org.codehaus.jackson.smile.SmileFactory;
 public class CustomerSmileSerializer implements ByteArraySerializer<Customer> {
 
     public byte[] write(Customer customer) throws java.io.IOException{
-        System.out.println("I am writing a Customer");
+        //System.out.println("I am writing a Customer");
         return customer.name.getBytes();
     }
 
     public Customer read(byte[] bytes) throws java.io.IOException{
-        System.out.println("I am reading a Customer");
+        //System.out.println("I am reading a Customer");
         return new Customer( new String(bytes) );
     }
 

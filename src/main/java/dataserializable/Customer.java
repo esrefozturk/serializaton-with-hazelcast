@@ -29,7 +29,7 @@ public class Customer implements DataSerializable {
     }
 
     public void readData( ObjectDataInput objectDataInput ) throws IOException{
-        System.out.println("I am reading a Customer");
+        //System.out.println("I am reading a Customer");
         name = objectDataInput.readUTF();
         birthday = new Date( objectDataInput.readLong() );
         gender = Sex.valueOf( objectDataInput.readUTF() );
@@ -38,7 +38,7 @@ public class Customer implements DataSerializable {
     }
 
     public void writeData( ObjectDataOutput objectDataOutput ) throws IOException{
-        System.out.println("I am writing a Customer");
+        //System.out.println("I am writing a Customer");
         objectDataOutput.writeUTF( name );
         objectDataOutput.writeLong( birthday.getTime() );
         objectDataOutput.writeUTF( gender.toString() );

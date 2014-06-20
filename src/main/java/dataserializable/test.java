@@ -14,25 +14,14 @@ import java.util.Arrays;
  */
 
 public class test {
-    public static IMap<Integer, Customer> customerMap;
-    public static Config config;
-    public static HazelcastInstance hazelcastInstance;
-    public static Customer customer;
+
     public static void main( String[] args ){
-        config = new Config();
-        hazelcastInstance = Hazelcast.newHazelcastInstance(config);
-        customerMap = hazelcastInstance.getMap("customers");
-        customer = new Customer("ali veli" , new Date(93,8,4), Customer.Sex.MALE ,
-                                "ali@veli.com",new long[]{7,8,9,1,2,3});
+        Benchmark b = new Benchmark();
+        System.out.println("1000 set:"+ b.getWritePerformance()+"ms");
+        System.out.println("1000 get:"+ b.getReadPerformance()+"ms");
+        System.out.println("Average size:"+ b.getAverageSize()+"bytes");
 
-        customerMap.set(0, customer);
-        Customer newCustomer = customerMap.get(0);
 
-        System.out.println("Name:" + newCustomer.name);
-        System.out.println("Birthday:" + newCustomer.birthday);
-        System.out.println("Gender:" + newCustomer.gender);
-        System.out.println("EmailAddress:" + newCustomer.emailAddress);
-        System.out.println("LongArray:" + Arrays.toString( newCustomer.longArray ) );
     }
 
 }

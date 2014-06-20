@@ -29,12 +29,12 @@ public class Customer implements Serializable {
     }
 
     private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException{
-        System.out.println("I am reading a Customer");
+        //System.out.println("I am reading a Customer");
         objectInputStream.defaultReadObject();
     }
 
     private void writeObject(ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException{
-        System.out.println("I am writing a Customer");
+        //System.out.println("I am writing a Customer");
         objectOutputStream.defaultWriteObject();
     }
 
