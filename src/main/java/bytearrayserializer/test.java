@@ -1,15 +1,7 @@
-package jacksonsmile;
-
-import com.hazelcast.config.Config;
-import com.hazelcast.config.SerializerConfig;
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.IMap;
-import java.util.Arrays;
-import java.util.Date;
+package bytearrayserializer;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 20.06.2014.
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 19.06.2014.
  */
 
 public class test {

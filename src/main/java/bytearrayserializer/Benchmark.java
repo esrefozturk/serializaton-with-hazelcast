@@ -1,4 +1,4 @@
-package jacksonsmile;
+package bytearrayserializer;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.SerializerConfig;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Random;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 20.06.2014.
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
  */
 
 public class Benchmark {
@@ -33,7 +33,7 @@ public class Benchmark {
     public Benchmark(){
         Config config = new Config();
         serializerConfig = new SerializerConfig();
-        serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerSmileSerializer() );
+        serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerByteArraySerializer() );
         config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
@@ -55,7 +55,9 @@ public class Benchmark {
         start = System.currentTimeMillis();
         for(int i=0;i<TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new Customer( "name_" + newRandom  );
+            customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
+                    (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
+                    "email_" + newRandom , new long[newRandom] );
             customerMap.set( newRandom , customer );
         }
         end = System.currentTimeMillis();
@@ -66,7 +68,9 @@ public class Benchmark {
         totalSize = 0;
         for(int i=0;i<TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new Customer( "name_" + newRandom  );
+            customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
+                    (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
+                    "email_" + newRandom , new long[newRandom] );
             totalSize += serializationService.toData(customer).bufferSize();
         }
         return totalSize/TEST_CASE_COUNT;
