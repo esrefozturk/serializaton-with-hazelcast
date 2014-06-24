@@ -1,6 +1,7 @@
 package identifieddataserializable;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.GroupConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
@@ -9,7 +10,7 @@ import java.util.Date;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
 import java.util.Random;
-
+import mainbenchmark.MainBenchmark;
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 23.06.2014.
  */
@@ -22,8 +23,6 @@ public class Benchmark
     public Customer customer;
     public SerializationService serializationService;
     public long totalSize;
-    public int TEST_CASE_COUNT=1000;
-    public int MAX_RANDOM = 100;
     public Random random;
     public long start, end;
     public int newRandom;
@@ -31,6 +30,8 @@ public class Benchmark
     public Benchmark()
     {
         config = new Config();
+        GroupConfig groupConfig = new GroupConfig("identifieddataserializable");
+        config.setGroupConfig(groupConfig);
         config.getSerializationConfig().addDataSerializableFactory(1, new CustomerFactory());
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
@@ -42,9 +43,9 @@ public class Benchmark
     {
         start = System.currentTimeMillis();
 
-        for(int i = 0; i < TEST_CASE_COUNT; i++)
+        for(int i = 0; i < MainBenchmark.TEST_CASE_COUNT; i++)
         {
-            newRandom = random.nextInt(MAX_RANDOM);
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customerMap.get(newRandom);
         }
 
@@ -56,9 +57,9 @@ public class Benchmark
     {
         start = System.currentTimeMillis();
 
-        for(int i = 0; i < TEST_CASE_COUNT; i++)
+        for(int i = 0; i < MainBenchmark.TEST_CASE_COUNT; i++)
         {
-            newRandom = random.nextInt(MAX_RANDOM);
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<Long>() {{ add(Long.valueOf(newRandom)); }});
             customerMap.set(newRandom, customer);
         }
@@ -71,13 +72,13 @@ public class Benchmark
     {
         totalSize = 0;
 
-        for(int i = 0; i < TEST_CASE_COUNT; i++)
+        for(int i = 0; i < MainBenchmark.TEST_CASE_COUNT; i++)
         {
-            newRandom = random.nextInt(MAX_RANDOM);
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<Long>() {{ add(Long.valueOf(newRandom)); }});
             totalSize += (serializationService.toData(customer).bufferSize());
         }
 
-        return (totalSize / TEST_CASE_COUNT);
+        return (totalSize / MainBenchmark.TEST_CASE_COUNT);
     }
 }

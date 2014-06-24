@@ -2,14 +2,6 @@ package mainbenchmark;
 
 import java.util.ArrayList;
 import java.util.List;
-//import serializable.Benchmark;
-//import dataserializable.Benchmark;
-//import identifieddataserializable.Benchmark;
-//import externalizable.Benchmark;
-//import portable.Benchmark;
-//import kryo.Benchmark;
-//import bytearrayserializer.Benchmark;
-
 
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
@@ -17,6 +9,8 @@ import java.util.List;
 
 public class MainBenchmark {
 
+    public static int TEST_CASE_COUNT=1;
+    public static int MAX_RANDOM = 100;
     public static List<Result> results;
 
 
@@ -31,7 +25,7 @@ public class MainBenchmark {
                         serializableBenchmark.getAverageSize()
                 )
         );
-        /*
+
         dataserializable.Benchmark dataserializableBenchmark = new dataserializable.Benchmark();
         results.add( new Result( new String("DataSerializable"),
                         dataserializableBenchmark.getWritePerformance(),
@@ -41,7 +35,7 @@ public class MainBenchmark {
         );
 
         identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new identifieddataserializable.Benchmark();
-        results.add( new Result( new String("IdentifiedDataSerializable:"),
+        results.add( new Result( new String("IdentifiedDataSerializable"),
                         identifiedDataSerializableBenchmark.getWritePerformance(),
                         identifiedDataSerializableBenchmark.getReadPerformance(),
                         identifiedDataSerializableBenchmark.getAverageSize()
@@ -49,7 +43,7 @@ public class MainBenchmark {
         );
 
         externalizable.Benchmark externalizableBenchmark = new externalizable.Benchmark();
-        results.add( new Result( new String("Externalizable:"),
+        results.add( new Result( new String("Externalizable"),
                         externalizableBenchmark.getWritePerformance(),
                         externalizableBenchmark.getReadPerformance(),
                         externalizableBenchmark.getAverageSize()
@@ -57,7 +51,7 @@ public class MainBenchmark {
         );
 
         portable.Benchmark portableBenchmark = new portable.Benchmark();
-        results.add( new Result( new String("Portable:"),
+        results.add( new Result( new String("Portable"),
                         portableBenchmark.getWritePerformance(),
                         portableBenchmark.getReadPerformance(),
                         portableBenchmark.getAverageSize()
@@ -79,13 +73,13 @@ public class MainBenchmark {
                         byteArraySerializerBenchmark.getAverageSize()
                 )
         );
-*/
+
         System.out.println("------------------ RESULTS -------------------\n");
         for(int i=0;i<results.size();i++){
             System.out.println( results.get(i).name + ":" );
-            System.out.println( "\t\t\t\t\tWrite Performance : " + results.get(i).writePerformance + " ms" );
-            System.out.println( "\t\t\t\t\tRead Performance  : " + results.get(i).readPerformance + " ms" );
-            System.out.println( "\t\t\t\t\tAverage Size      : " + results.get(i).averageSize + " bytes\n" );
+            System.out.println( "\t\t\t\t\t\t\tWrite Performance : " + results.get(i).writePerformance + " ms" );
+            System.out.println( "\t\t\t\t\t\t\tRead Performance  : " + results.get(i).readPerformance + " ms" );
+            System.out.println( "\t\t\t\t\t\t\tAverage Size      : " + results.get(i).averageSize + " bytes\n" );
 
         }
 
