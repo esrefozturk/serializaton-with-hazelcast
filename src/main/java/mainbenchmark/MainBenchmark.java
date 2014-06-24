@@ -80,11 +80,12 @@ public class MainBenchmark {
                 )
         );
 
+        System.out.println("------------------ RESULTS -------------------\n");
         for(int i=0;i<results.size();i++){
             System.out.println( results.get(i).name + ":" );
-            System.out.println( "\t\t\t\t\tWrite Performance: " + results.get(i).writePerformance + " ms" );
-            System.out.println( "\t\t\t\t\tRead Performance: " + results.get(i).readPerformance + " ms" );
-            System.out.println( "\t\t\t\t\tAverage Size: " + results.get(i).averageSize + " bytes" );
+            System.out.println( "\t\t\t\t\tWrite Performance : " + results.get(i).writePerformance + " ms" );
+            System.out.println( "\t\t\t\t\tRead Performance  : " + results.get(i).readPerformance + " ms" );
+            System.out.println( "\t\t\t\t\tAverage Size      : " + results.get(i).averageSize + " bytes\n" );
 
         }
 
