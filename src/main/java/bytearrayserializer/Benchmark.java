@@ -1,12 +1,14 @@
 package bytearrayserializer;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.GroupConfig;
 import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
+import mainbenchmark.MainBenchmark;
 
 import java.util.Date;
 import java.util.Random;
@@ -24,14 +26,13 @@ public class Benchmark {
     public SerializationService serializationService;
     public SerializerConfig serializerConfig;
     public long totalSize;
-    public int TEST_CASE_COUNT=1000;
-    public int MAX_RANDOM = 100;
     public Random random;
     public long start,end;
     public int newRandom;
 
     public Benchmark(){
         Config config = new Config();
+        config.setGroupConfig(new GroupConfig("bytearrayserializer"));
         serializerConfig = new SerializerConfig();
         serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerByteArraySerializer() );
         config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );
@@ -43,8 +44,8 @@ public class Benchmark {
 
     public double getReadPerformance(){
         start = System.currentTimeMillis();
-        for(int i=0;i<TEST_CASE_COUNT;i++){
-            newRandom = random.nextInt(MAX_RANDOM);
+        for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customerMap.get( newRandom );
         }
         end = System.currentTimeMillis();
@@ -53,8 +54,8 @@ public class Benchmark {
 
     public double getWritePerformance(){
         start = System.currentTimeMillis();
-        for(int i=0;i<TEST_CASE_COUNT;i++){
-            newRandom = random.nextInt(MAX_RANDOM);
+        for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
                     (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
@@ -66,14 +67,14 @@ public class Benchmark {
 
     public double getAverageSize(){
         totalSize = 0;
-        for(int i=0;i<TEST_CASE_COUNT;i++){
-            newRandom = random.nextInt(MAX_RANDOM);
+        for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
+            newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
                     (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
             totalSize += serializationService.toData(customer).bufferSize();
         }
-        return totalSize/TEST_CASE_COUNT;
+        return totalSize/MainBenchmark.TEST_CASE_COUNT;
     }
 
 }
