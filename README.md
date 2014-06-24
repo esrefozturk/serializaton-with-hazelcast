@@ -5,3 +5,9 @@ This project is prepared to serve as a sample application for Hazelcast, the lea
 You should have installed Apache Maven(http://maven.apache.org/download.cgi) on your system.
 
 <h2>How to Run Sample Application</h2>
+
+1) clone the repository to your local
+
+2) make run.sh executable
+
+3) run run.sh file
