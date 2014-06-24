@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MainBenchmark {
 
-    public static int TEST_CASE_COUNT=1;
+    public static int TEST_CASE_COUNT=100;
     public static int MAX_RANDOM = 100;
     public static List<Result> results;
 

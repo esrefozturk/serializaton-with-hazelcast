@@ -31,8 +31,7 @@ public class Benchmark {
 
     public Benchmark(){
         config = new Config();
-        GroupConfig groupConfig = new GroupConfig("kryo");
-        config.setGroupConfig(groupConfig);
+        config.setGroupConfig(new GroupConfig("kryo"));
         serializerConfig = new SerializerConfig();
         serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerKryoSerializer() );
         config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );

@@ -32,8 +32,7 @@ public class Benchmark {
 
     public Benchmark(){
         Config config = new Config();
-        GroupConfig groupConfig = new GroupConfig("bytearrayserializer");
-        config.setGroupConfig(groupConfig);
+        config.setGroupConfig(new GroupConfig("bytearrayserializer"));
         serializerConfig = new SerializerConfig();
         serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerByteArraySerializer() );
         config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );

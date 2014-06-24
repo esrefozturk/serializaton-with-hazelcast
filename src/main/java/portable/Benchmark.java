@@ -32,8 +32,7 @@ public class Benchmark
     public Benchmark()
     {
         config = new Config();
-        GroupConfig groupConfig = new GroupConfig("portable");
-        config.setGroupConfig(groupConfig);
+        config.setGroupConfig(new GroupConfig("portable"));
         config.getSerializationConfig().addPortableFactory(1, new CustomerFactory());
         ClassDefinitionBuilder builder = new ClassDefinitionBuilder(1, 1);
         builder.addUTFField("name").addLongField("birthday").addUTFField("gender").addUTFField("emailAddress").addIntField("size").addLongArrayField("longArray");

@@ -30,8 +30,7 @@ public class Benchmark
     public Benchmark()
     {
         config = new Config();
-        GroupConfig groupConfig = new GroupConfig("identifieddataserializable");
-        config.setGroupConfig(groupConfig);
+        config.setGroupConfig(new GroupConfig("identifieddataserializable"));
         config.getSerializationConfig().addDataSerializableFactory(1, new CustomerFactory());
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
