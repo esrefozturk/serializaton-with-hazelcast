@@ -5,7 +5,6 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import java.util.Date;
-import java.util.ArrayList;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 20.06.2014.
@@ -23,7 +22,7 @@ public class test
         config = new Config();
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
-        customer = new externalizable.Customer("ad soyad", new Date(93,8,7), Customer.Sex.FEMALE, "ad@soyad.com", new ArrayList<Long>() {{ add(15L); add(75L); add(8L); add(1L); }});
+        customer = new externalizable.Customer("ad soyad", new Date(93,8,7), Customer.Sex.FEMALE, "ad@soyad.com", new long[]{2,4,3,567});
         customerMap.set(1, customer);
         externalizable.Customer newCustomer = customerMap.get(1);
 

@@ -4,7 +4,6 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -25,7 +24,7 @@ public class test
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
 
-        customer = new identifieddataserializable.Customer("ad soyad", new Date(01,8,7), Customer.Sex.MALE, "ad@soyad.com", new ArrayList<Long>() {{ add(150L); add(75L); add(3L); add(1L); }});
+        customer = new identifieddataserializable.Customer("ad soyad", new Date(01,8,7), Customer.Sex.MALE, "ad@soyad.com", new long[]{23,4234,3,567,9});
         customerMap.set(1, customer);
         identifieddataserializable.Customer newCustomer = customerMap.get(1);
 

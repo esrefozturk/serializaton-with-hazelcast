@@ -4,7 +4,6 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
-import java.util.ArrayList;
 import java.util.Date;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
@@ -59,7 +58,7 @@ public class Benchmark
         for(int i = 0; i < TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<Long>() {{ add(Long.valueOf(newRandom)); }});
+            customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             customerMap.set(newRandom, customer);
         }
 
@@ -74,7 +73,7 @@ public class Benchmark
         for(int i = 0; i < TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<Long>() {{ add(Long.valueOf(newRandom)); }});
+            customer = new identifieddataserializable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             totalSize += (serializationService.toData(customer).bufferSize());
         }
 

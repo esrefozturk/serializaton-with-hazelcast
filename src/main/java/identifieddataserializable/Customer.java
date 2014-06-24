@@ -4,7 +4,6 @@ import com.hazelcast.nio.ObjectDataInput;
 import com.hazelcast.nio.ObjectDataOutput;
 import com.hazelcast.nio.serialization.IdentifiedDataSerializable;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -18,11 +17,11 @@ public class Customer implements IdentifiedDataSerializable
     Date birthday;
     Sex gender;
     String emailAddress;
-    ArrayList<Long> longArray;
+    long[] longArray;
 
     Customer() {}
 
-    Customer(String name, Date birthday, Sex gender, String emailAddress, ArrayList<Long> longArray)
+    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
     {
         this.name = name;
         this.birthday = birthday;
@@ -46,9 +45,9 @@ public class Customer implements IdentifiedDataSerializable
         gender = Sex.valueOf(objectDataInput.readUTF());
         emailAddress = objectDataInput.readUTF();
         int len = objectDataInput.readInt();
-        longArray = new ArrayList<Long>(len);
+        longArray = new long[len];
         Long tmp;
-        for(int i = 0; i < len; i++)  {  tmp = objectDataInput.readLong(); longArray.add(tmp); }
+        for(int i = 0; i < len; i++)  {  tmp = objectDataInput.readLong(); longArray[i] = tmp; }
     }
 
     public void writeData(ObjectDataOutput objectDataOutput) throws IOException
@@ -57,7 +56,7 @@ public class Customer implements IdentifiedDataSerializable
         objectDataOutput.writeLong(birthday.getTime());
         objectDataOutput.writeUTF(gender.toString());
         objectDataOutput.writeUTF(emailAddress);
-        objectDataOutput.writeInt(longArray.size());
-        for(int i = 0; i < longArray.size(); i++) objectDataOutput.writeLong(longArray.get(i));
+        objectDataOutput.writeInt(longArray.length);
+        for(int i = 0; i < longArray.length; i++) objectDataOutput.writeLong(longArray[i]);
     }
 }

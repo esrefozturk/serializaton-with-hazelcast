@@ -6,7 +6,6 @@ import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
 import java.lang.ClassNotFoundException;
-import java.util.ArrayList;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
@@ -19,11 +18,11 @@ public class Customer implements Externalizable
     Date birthday;
     Sex gender;
     String emailAddress;
-    ArrayList<Long> longArray;
+    long[] longArray;
 
     Customer() {}
 
-    Customer(String name, Date birthday, Sex gender, String emailAddress, ArrayList<Long> longArray)
+    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
     {
         this.name = name;
         this.birthday = birthday;
@@ -39,9 +38,9 @@ public class Customer implements Externalizable
         gender = Sex.valueOf(objectInput.readUTF());
         emailAddress = objectInput.readUTF();
         int len = objectInput.readInt();
-        longArray = new ArrayList<Long>(len);
+        longArray = new long[len];
         Long tmp;
-        for(int i = 0; i < len; i++)  {  tmp = objectInput.readLong(); longArray.add(tmp); }
+        for(int i = 0; i < len; i++)  {  tmp = objectInput.readLong(); longArray[i] = tmp; }
     }
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException
@@ -50,7 +49,7 @@ public class Customer implements Externalizable
         objectOutput.writeLong(birthday.getTime());
         objectOutput.writeUTF(gender.toString());
         objectOutput.writeUTF(emailAddress);
-        objectOutput.writeInt(longArray.size());
-        for(int i = 0; i < longArray.size(); i++) objectOutput.writeLong(longArray.get(i));
+        objectOutput.writeInt(longArray.length);
+        for(int i = 0; i < longArray.length; i++) objectOutput.writeLong(longArray[i]);
     }
 }
