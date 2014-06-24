@@ -31,7 +31,7 @@ public class MainBenchmark {
                         serializableBenchmark.getAverageSize()
                 )
         );
-
+        /*
         dataserializable.Benchmark dataserializableBenchmark = new dataserializable.Benchmark();
         results.add( new Result( new String("DataSerializable"),
                         dataserializableBenchmark.getWritePerformance(),
@@ -40,29 +40,29 @@ public class MainBenchmark {
                 )
         );
 
-        /*identifieddataserializable.Benchmark identifieddataserializableBenchmark = new identifieddataserializable.Benchmark();
-        results.add( new Result( new String("Serializable:"),
-                        identifieddataserializableBenchmark.getWritePerformance(),
-                        identifieddataserializableBenchmark.getReadPerformance(),
-                        identifieddataserializableBenchmark.getAverageSize())
-        )
-        );*/
+        identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new identifieddataserializable.Benchmark();
+        results.add( new Result( new String("IdentifiedDataSerializable:"),
+                        identifiedDataSerializableBenchmark.getWritePerformance(),
+                        identifiedDataSerializableBenchmark.getReadPerformance(),
+                        identifiedDataSerializableBenchmark.getAverageSize()
+                )
+        );
 
-         /*identifieddataserializable.Benchmark identifieddataserializableBenchmark = new dataserializable.Benchmark();
-        results.add( new Result( new String("Serializable:"),
-                        identifieddataserializableBenchmark.getWritePerformance(),
-                        identifieddataserializableBenchmark.getReadPerformance(),
-                        identifieddataserializableBenchmark.getAverageSize())
-        )
-        );*/
+        externalizable.Benchmark externalizableBenchmark = new externalizable.Benchmark();
+        results.add( new Result( new String("Externalizable:"),
+                        externalizableBenchmark.getWritePerformance(),
+                        externalizableBenchmark.getReadPerformance(),
+                        externalizableBenchmark.getAverageSize()
+                )
+        );
 
-         /*identifieddataserializable.Benchmark identifieddataserializableBenchmark = new dataserializable.Benchmark();
-        results.add( new Result( new String("Serializable:"),
-                        identifieddataserializableBenchmark.getWritePerformance(),
-                        identifieddataserializableBenchmark.getReadPerformance(),
-                        identifieddataserializableBenchmark.getAverageSize())
-        )
-        );*/
+        portable.Benchmark portableBenchmark = new portable.Benchmark();
+        results.add( new Result( new String("Portable:"),
+                        portableBenchmark.getWritePerformance(),
+                        portableBenchmark.getReadPerformance(),
+                        portableBenchmark.getAverageSize()
+                )
+        );
 
         kryo.Benchmark kryoBenchmark = new kryo.Benchmark();
         results.add( new Result( new String("Kryo"),
@@ -79,7 +79,7 @@ public class MainBenchmark {
                         byteArraySerializerBenchmark.getAverageSize()
                 )
         );
-
+*/
         System.out.println("------------------ RESULTS -------------------\n");
         for(int i=0;i<results.size();i++){
             System.out.println( results.get(i).name + ":" );
