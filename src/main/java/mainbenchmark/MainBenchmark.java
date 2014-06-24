@@ -1,5 +1,7 @@
 package mainbenchmark;
 
+import com.hazelcast.core.Hazelcast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 public class MainBenchmark {
 
-    public static int TEST_CASE_COUNT=100;
+    public static int TEST_CASE_COUNT=10;
     public static int MAX_RANDOM = 100;
     public static List<Result> results;
 
@@ -74,12 +76,14 @@ public class MainBenchmark {
                 )
         );
 
-        System.out.println("------------------ RESULTS -------------------\n");
+        Hazelcast.shutdownAll();
+
+        System.out.println("\n----------------------  RESULTS  -----------------------\n");
         for(int i=0;i<results.size();i++){
             System.out.println( results.get(i).name + ":" );
-            System.out.println( "\t\t\t\t\t\t\tWrite Performance : " + results.get(i).writePerformance + " ms" );
-            System.out.println( "\t\t\t\t\t\t\tRead Performance  : " + results.get(i).readPerformance + " ms" );
-            System.out.println( "\t\t\t\t\t\t\tAverage Size      : " + results.get(i).averageSize + " bytes\n" );
+            System.out.println( "\t\t\t\t\t\t\t\tWrite Performance : " + results.get(i).writePerformance + " ms" );
+            System.out.println( "\t\t\t\t\t\t\t\tRead Performance  : " + results.get(i).readPerformance + " ms" );
+            System.out.println( "\t\t\t\t\t\t\t\tAverage Size      : " + results.get(i).averageSize + " bytes\n" );
 
         }
 
