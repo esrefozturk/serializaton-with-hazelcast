@@ -64,7 +64,7 @@ public class Benchmark
         for(int i = 0; i < TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<Long>() {{ add(Long.valueOf(newRandom)); }});
+            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             customerMap.set(newRandom, customer);
         }
 
@@ -79,7 +79,7 @@ public class Benchmark
         for(int i = 0; i < TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MAX_RANDOM);
-            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new ArrayList<>() {{ add(Long.valueOf(newRandom)); }});
+            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             totalSize += (serializationService.toData(customer).bufferSize());
         }
 
