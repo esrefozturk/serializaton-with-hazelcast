@@ -28,14 +28,14 @@ public class Customer implements Serializable {
         this.longArray = longArray;
     }
 
-    private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException{
+    /*private void readObject(ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException{
         //System.out.println("I am reading a Customer");
         objectInputStream.defaultReadObject();
-    }
+    }*/
 
-    private void writeObject(ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException{
+    /*private void writeObject(ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException{
         //System.out.println("I am writing a Customer");
         objectOutputStream.defaultWriteObject();
-    }
+    }*/
 
 }
