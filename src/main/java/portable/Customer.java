@@ -3,9 +3,6 @@ package portable;
 import com.hazelcast.nio.serialization.Portable;
 import com.hazelcast.nio.serialization.PortableWriter;
 import com.hazelcast.nio.serialization.PortableReader;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.io.IOException;
 
@@ -20,37 +17,43 @@ public class Customer implements Portable
     Date birthday;
     Sex gender;
     String emailAddress;
-    ArrayList<Long> longArray;
+    long[] longArray;
+
+    Customer() {}
+
+    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
+    {
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.emailAddress = emailAddress;
+        this.longArray = longArray;
+    }
 
     public int getFactoryId(){
-        return 0;
+        return 1;
     }
 
     public int getClassId(){
-        return 0;
+        return 1;
     }
 
     public void readPortable( PortableReader portableReader) throws IOException
     {
         name = portableReader.readUTF("name");
-        birthday = new Date(Long.valueOf(portableReader.readUTF("birthday")).longValue());
+        birthday = new Date(portableReader.readLong("birthday"));
         gender = Sex.valueOf(portableReader.readUTF("gender"));
         emailAddress = portableReader.readUTF("emailAddress");
-        int len = portableReader.readInt("size");
-        longArray = new ArrayList<Long>(len);
-        Long tmp;
-        for(int i = 0; i < len; i++)  {  tmp = portableReader.readLong("arrayElem"); longArray.add(tmp); }
+        longArray = portableReader.readLongArray("longArray");
     }
 
     public void writePortable( PortableWriter portableWriter ) throws IOException
     {
         portableWriter.writeUTF("name", name);
-        Format formatter = new SimpleDateFormat("yyyy-dd-MM hh:mm:ss");
-        String s = formatter.format(birthday);
-        portableWriter.writeUTF("birthday", s);
+        portableWriter.writeLong("birthday", birthday.getTime());
         portableWriter.writeUTF("gender", gender.toString());
         portableWriter.writeUTF("emailAddress", emailAddress);
-        portableWriter.writeInt("size", longArray.size());
-        for(int i = 0; i < longArray.size(); i++) portableWriter.writeLong("arrayElem", longArray.get(i));
+        portableWriter.writeInt("size", longArray.length);
+        portableWriter.writeLongArray("longArray", longArray);
     }
 }

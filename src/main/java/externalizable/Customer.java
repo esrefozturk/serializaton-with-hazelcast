@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.lang.ClassNotFoundException;
 import java.util.ArrayList;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
-*/
+ */
 
 public class Customer implements Externalizable
 {
@@ -23,12 +21,23 @@ public class Customer implements Externalizable
     String emailAddress;
     ArrayList<Long> longArray;
 
+    Customer() {}
+
+    Customer(String name, Date birthday, Sex gender, String emailAddress, ArrayList<Long> longArray)
+    {
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.emailAddress = emailAddress;
+        this.longArray = longArray;
+    }
+
     public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException
     {
-        name = objectInput.readLine();
-        birthday = new Date(Long.valueOf(objectInput.readLine()).longValue());
-        gender = Sex.valueOf(objectInput.readLine());
-        emailAddress = objectInput.readLine();
+        name = objectInput.readUTF();
+        birthday = new Date(objectInput.readLong());
+        gender = Sex.valueOf(objectInput.readUTF());
+        emailAddress = objectInput.readUTF();
         int len = objectInput.readInt();
         longArray = new ArrayList<Long>(len);
         Long tmp;
@@ -37,12 +46,10 @@ public class Customer implements Externalizable
 
     public void writeExternal(ObjectOutput objectOutput) throws IOException
     {
-        objectOutput.writeChars(name);
-        Format formatter = new SimpleDateFormat("yyyy-dd-MM hh:mm:ss");
-        String s = formatter.format(birthday);
-        objectOutput.writeChars(s);
-        objectOutput.writeChars(gender.toString());
-        objectOutput.writeChars(emailAddress);
+        objectOutput.writeUTF(name);
+        objectOutput.writeLong(birthday.getTime());
+        objectOutput.writeUTF(gender.toString());
+        objectOutput.writeUTF(emailAddress);
         objectOutput.writeInt(longArray.size());
         for(int i = 0; i < longArray.size(); i++) objectOutput.writeLong(longArray.get(i));
     }
