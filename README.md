@@ -8,6 +8,12 @@ You should have installed Apache Maven(http://maven.apache.org/download.cgi) on 
 
 1) clone the repository to your local
 
-2) make run.sh executable
+2) run the code: 
+```
+mvn compile
+```
 
-3) run run.sh file
+3) run the code
+```
+mvn exec:java -Dexec.mainClass="mainbenchmark.MainBenchmark"
+```
