@@ -6,14 +6,18 @@ You should have installed Apache Maven(http://maven.apache.org/download.cgi) on 
 
 <h2>How to Run Sample Application</h2>
 
-1) clone the repository to your local
+1) clone the repository to your local using the following command:
+```
+git clone https://github.com/hazelcastInternsSummer14/customSerialization.git
+```
+2) go to customSerialization folder
 
-2) run the code: 
+3) run the code: 
 ```
 mvn compile
 ```
 
-3) run the code
+4) run the code:
 ```
 mvn exec:java -Dexec.mainClass="mainbenchmark.MainBenchmark"
 ```
