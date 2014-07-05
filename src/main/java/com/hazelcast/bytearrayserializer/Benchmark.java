@@ -1,4 +1,4 @@
-package kryo;
+package com.hazelcast.bytearrayserializer;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
@@ -8,12 +8,13 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
-import mainbenchmark.MainBenchmark;
+import com.hazelcast.mainbenchmark.MainBenchmark;
+
 import java.util.Date;
 import java.util.Random;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 20.06.2014.
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
  */
 
 public class Benchmark {
@@ -30,10 +31,10 @@ public class Benchmark {
     public int newRandom;
 
     public Benchmark(){
-        config = new Config();
-        config.setGroupConfig(new GroupConfig("kryo"));
+        Config config = new Config();
+        config.setGroupConfig(new GroupConfig("bytearrayserializer"));
         serializerConfig = new SerializerConfig();
-        serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerKryoSerializer() );
+        serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerByteArraySerializer() );
         config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");

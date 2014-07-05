@@ -1,6 +1,7 @@
-package mainbenchmark;
+package com.hazelcast.mainbenchmark;
 
 import com.hazelcast.core.Hazelcast;
+import com.hazelcast.serializable.Benchmark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class MainBenchmark {
 
         results = new ArrayList<Result>();
 
-        serializable.Benchmark serializableBenchmark = new serializable.Benchmark();
+        Benchmark serializableBenchmark = new Benchmark();
         results.add( new Result( new String("Serializable"),
                         serializableBenchmark.getWritePerformance(),
                         serializableBenchmark.getReadPerformance(),
@@ -28,7 +29,7 @@ public class MainBenchmark {
                 )
         );
 
-        dataserializable.Benchmark dataserializableBenchmark = new dataserializable.Benchmark();
+        com.hazelcast.dataserializable.Benchmark dataserializableBenchmark = new com.hazelcast.dataserializable.Benchmark();
         results.add( new Result( new String("DataSerializable"),
                         dataserializableBenchmark.getWritePerformance(),
                         dataserializableBenchmark.getReadPerformance(),
@@ -36,7 +37,7 @@ public class MainBenchmark {
                 )
         );
 
-        identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new identifieddataserializable.Benchmark();
+        com.hazelcast.identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new com.hazelcast.identifieddataserializable.Benchmark();
         results.add( new Result( new String("IdentifiedDataSerializable"),
                         identifiedDataSerializableBenchmark.getWritePerformance(),
                         identifiedDataSerializableBenchmark.getReadPerformance(),
@@ -44,7 +45,7 @@ public class MainBenchmark {
                 )
         );
 
-        externalizable.Benchmark externalizableBenchmark = new externalizable.Benchmark();
+        com.hazelcast.externalizable.Benchmark externalizableBenchmark = new com.hazelcast.externalizable.Benchmark();
         results.add( new Result( new String("Externalizable"),
                         externalizableBenchmark.getWritePerformance(),
                         externalizableBenchmark.getReadPerformance(),
@@ -52,7 +53,7 @@ public class MainBenchmark {
                 )
         );
 
-        portable.Benchmark portableBenchmark = new portable.Benchmark();
+        com.hazelcast.portable.Benchmark portableBenchmark = new com.hazelcast.portable.Benchmark();
         results.add( new Result( new String("Portable"),
                         portableBenchmark.getWritePerformance(),
                         portableBenchmark.getReadPerformance(),
@@ -60,7 +61,7 @@ public class MainBenchmark {
                 )
         );
 
-        kryo.Benchmark kryoBenchmark = new kryo.Benchmark();
+        com.hazelcast.kryo.Benchmark kryoBenchmark = new com.hazelcast.kryo.Benchmark();
         results.add( new Result( new String("Kryo"),
                         kryoBenchmark.getWritePerformance(),
                         kryoBenchmark.getReadPerformance(),
@@ -68,7 +69,7 @@ public class MainBenchmark {
                 )
         );
 
-        bytearrayserializer.Benchmark byteArraySerializerBenchmark = new bytearrayserializer.Benchmark();
+        com.hazelcast.bytearrayserializer.Benchmark byteArraySerializerBenchmark = new com.hazelcast.bytearrayserializer.Benchmark();
         results.add( new Result( new String("ByteArraySerializer"),
                         byteArraySerializerBenchmark.getWritePerformance(),
                         byteArraySerializerBenchmark.getReadPerformance(),

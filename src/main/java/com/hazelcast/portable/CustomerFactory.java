@@ -1,4 +1,4 @@
-package portable;
+package com.hazelcast.portable;
 
 import com.hazelcast.nio.serialization.Portable;
 import com.hazelcast.nio.serialization.PortableFactory;

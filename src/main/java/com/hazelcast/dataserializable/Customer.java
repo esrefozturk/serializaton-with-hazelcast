@@ -1,4 +1,4 @@
-package dataserializable;
+package com.hazelcast.dataserializable;
 
 import com.hazelcast.nio.ObjectDataInput;
 import com.hazelcast.nio.ObjectDataOutput;

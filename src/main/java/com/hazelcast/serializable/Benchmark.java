@@ -1,4 +1,4 @@
-package serializable;
+package com.hazelcast.serializable;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
@@ -10,7 +10,9 @@ import com.hazelcast.nio.serialization.SerializationServiceBuilder;
 import java.util.Random;
 import java.util.Date;
 import java.lang.System;
-import mainbenchmark.MainBenchmark;
+
+import mainbenchmark.AbstractCustomer;
+import com.hazelcast.mainbenchmark.MainBenchmark;
 
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 20.06.2014.
@@ -52,7 +54,7 @@ public class Benchmark {
         for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
-                    (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
+                    (newRandom%2==0)? AbstractCustomer.Sex.MALE:AbstractCustomer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
             customerMap.set( newRandom , customer );
         }
@@ -65,7 +67,7 @@ public class Benchmark {
         for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
-                    (newRandom%2==0)?Customer.Sex.MALE:Customer.Sex.FEMALE ,
+                    (newRandom%2==0)?AbstractCustomer.Sex.MALE:AbstractCustomer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
             totalSize += serializationService.toData(customer).bufferSize();
         }

@@ -1,4 +1,4 @@
-package portable;
+package com.hazelcast.portable;
 
 import com.hazelcast.nio.serialization.Portable;
 import com.hazelcast.nio.serialization.PortableWriter;
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Customer implements Portable
 {
     public enum Sex { MALE, FEMALE }
-    String name;
+    public String name;
     Date birthday;
     Sex gender;
     String emailAddress;

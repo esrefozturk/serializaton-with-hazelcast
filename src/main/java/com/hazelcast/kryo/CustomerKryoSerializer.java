@@ -1,4 +1,4 @@
-package kryo;
+package com.hazelcast.kryo;
 
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.io.Input;

@@ -1,4 +1,4 @@
-package portable;
+package com.hazelcast.portable;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
@@ -6,12 +6,12 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.*;
-import java.util.ArrayList;
+
 import java.util.Date;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
 import java.util.Random;
-import mainbenchmark.MainBenchmark;
+import com.hazelcast.mainbenchmark.MainBenchmark;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 23.06.2014.
@@ -65,7 +65,7 @@ public class Benchmark
         for(int i = 0; i < MainBenchmark.TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
-            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
+            customer = new Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             customerMap.set(newRandom, customer);
         }
 
@@ -80,7 +80,7 @@ public class Benchmark
         for(int i = 0; i < MainBenchmark.TEST_CASE_COUNT; i++)
         {
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
-            customer = new portable.Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
+            customer = new Customer("MyNameIs" + newRandom, new Date(newRandom), ((newRandom % 2) == 0) ? Customer.Sex.MALE : Customer.Sex.FEMALE, "MyEmailIs" + newRandom, new long[newRandom]);
             totalSize += (serializationService.toData(customer).bufferSize());
         }
 

@@ -1,13 +1,14 @@
-package dataserializable;
+package com.hazelcast.kryo;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
+import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
-import mainbenchmark.MainBenchmark;
+import com.hazelcast.mainbenchmark.MainBenchmark;
 import java.util.Date;
 import java.util.Random;
 
@@ -22,6 +23,7 @@ public class Benchmark {
     public HazelcastInstance hazelcastInstance;
     public Customer customer;
     public SerializationService serializationService;
+    public SerializerConfig serializerConfig;
     public long totalSize;
     public Random random;
     public long start,end;
@@ -29,7 +31,10 @@ public class Benchmark {
 
     public Benchmark(){
         config = new Config();
-        config.setGroupConfig(new GroupConfig("dataserializable"));
+        config.setGroupConfig(new GroupConfig("kryo"));
+        serializerConfig = new SerializerConfig();
+        serializerConfig.setTypeClass( Customer.class ).setImplementation( new CustomerKryoSerializer() );
+        config.getSerializationConfig().getSerializerConfigs().add( serializerConfig );
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
         serializationService = new SerializationServiceBuilder().setConfig(config.getSerializationConfig()).build();

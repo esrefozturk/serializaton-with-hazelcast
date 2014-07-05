@@ -1,4 +1,4 @@
-package externalizable;
+package com.hazelcast.externalizable;
 
 import java.util.Date;
 import java.io.IOException;

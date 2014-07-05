@@ -1,18 +1,22 @@
-package kryo;
+package com.hazelcast.bytearrayserializer;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
  */
 
 public class Customer {
     public enum Sex { MALE, FEMALE }
-    String name;
-    Date birthday;
-    Sex gender;
-    String emailAddress;
-    long[] longArray;
+    public String name;
+    public Date birthday;
+    public Sex gender;
+    public String emailAddress;
+    public long[] longArray;
 
     public Customer(){}
 

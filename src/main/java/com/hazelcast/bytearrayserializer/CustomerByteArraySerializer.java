@@ -1,4 +1,4 @@
-package bytearrayserializer;
+package com.hazelcast.bytearrayserializer;
 
 import com.hazelcast.nio.serialization.ByteArraySerializer;
 import java.io.IOException;

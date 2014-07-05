@@ -1,4 +1,4 @@
-package mainbenchmark;
+package com.hazelcast.mainbenchmark;
 
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
