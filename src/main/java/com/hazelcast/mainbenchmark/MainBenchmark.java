@@ -3,6 +3,7 @@ package com.hazelcast.mainbenchmark;
 import com.hazelcast.bytearrayserializer.ByteArraySerializerBenchmark;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.dataserializable.DataSerializableBenchmark;
+import com.hazelcast.jacksonsmile.JacksonSmileBenchmark;
 import com.hazelcast.kryo.KryoBenchmark;
 import com.hazelcast.serializable.SerializableBenchmark;
 
@@ -86,6 +87,16 @@ public class MainBenchmark {
                 )
         );
         Hazelcast.shutdownAll();
+
+        JacksonSmileBenchmark jacksonSmileBenchmark = new JacksonSmileBenchmark();
+        results.add( new Result( new String("JacksonSmile"),
+                        jacksonSmileBenchmark.getWritePerformance(),
+                        jacksonSmileBenchmark.getReadPerformance(),
+                        jacksonSmileBenchmark.getAverageSize()
+                )
+        );
+        Hazelcast.shutdownAll();
+
 
         System.out.println("\n----------------------  RESULTS  -----------------------\n");
         for(int i=0;i<results.size();i++){
