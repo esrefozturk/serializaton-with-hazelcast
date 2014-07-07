@@ -9,8 +9,9 @@ import java.util.Date;
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 07.07.2014.
  */
-public class ByteArraySerialierBenchmark extends AbstractBenchmark {
-    public ByteArraySerialierBenchmark(){
+
+public class ByteArraySerializerBenchmark extends AbstractBenchmark {
+    public ByteArraySerializerBenchmark(){
         super("bytearrayserializer",new SerializerConfig().setTypeClass(ByteArraySerializerCustomer.class).setImplementation( new CustomerByteArraySerializer() ));
     }
     public double getWritePerformance(){

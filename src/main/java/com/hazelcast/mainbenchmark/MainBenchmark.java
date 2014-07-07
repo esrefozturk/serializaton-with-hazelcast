@@ -1,6 +1,6 @@
 package com.hazelcast.mainbenchmark;
 
-import com.hazelcast.bytearrayserializer.ByteArraySerialierBenchmark;
+import com.hazelcast.bytearrayserializer.ByteArraySerializerBenchmark;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.dataserializable.DataSerializableBenchmark;
 import com.hazelcast.kryo.KryoBenchmark;
@@ -72,7 +72,7 @@ public class MainBenchmark {
                 )
         );
 
-        ByteArraySerialierBenchmark byteArraySerializerBenchmark = new ByteArraySerialierBenchmark();
+        ByteArraySerializerBenchmark byteArraySerializerBenchmark = new ByteArraySerializerBenchmark();
         results.add( new Result( new String("ByteArraySerializer"),
                         byteArraySerializerBenchmark.getWritePerformance(),
                         byteArraySerializerBenchmark.getReadPerformance(),
