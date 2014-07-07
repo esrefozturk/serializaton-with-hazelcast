@@ -31,6 +31,7 @@ public class MainBenchmark {
                         serializableBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         DataSerializableBenchmark dataserializableBenchmark = new DataSerializableBenchmark();
         results.add( new Result( new String("DataSerializable"),
@@ -39,6 +40,7 @@ public class MainBenchmark {
                         dataserializableBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         com.hazelcast.identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new com.hazelcast.identifieddataserializable.Benchmark();
         results.add( new Result( new String("IdentifiedDataSerializable"),
@@ -47,6 +49,7 @@ public class MainBenchmark {
                         identifiedDataSerializableBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         com.hazelcast.externalizable.Benchmark externalizableBenchmark = new com.hazelcast.externalizable.Benchmark();
         results.add( new Result( new String("Externalizable"),
@@ -55,6 +58,7 @@ public class MainBenchmark {
                         externalizableBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         com.hazelcast.portable.Benchmark portableBenchmark = new com.hazelcast.portable.Benchmark();
         results.add( new Result( new String("Portable"),
@@ -63,6 +67,7 @@ public class MainBenchmark {
                         portableBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         KryoBenchmark kryoBenchmark = new KryoBenchmark();
         results.add( new Result( new String("Kryo"),
@@ -71,6 +76,7 @@ public class MainBenchmark {
                         kryoBenchmark.getAverageSize()
                 )
         );
+        Hazelcast.shutdownAll();
 
         ByteArraySerializerBenchmark byteArraySerializerBenchmark = new ByteArraySerializerBenchmark();
         results.add( new Result( new String("ByteArraySerializer"),
@@ -79,7 +85,6 @@ public class MainBenchmark {
                         byteArraySerializerBenchmark.getAverageSize()
                 )
         );
-
         Hazelcast.shutdownAll();
 
         System.out.println("\n----------------------  RESULTS  -----------------------\n");
