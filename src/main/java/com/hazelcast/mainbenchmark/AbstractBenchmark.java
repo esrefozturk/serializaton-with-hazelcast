@@ -26,7 +26,6 @@ public abstract class AbstractBenchmark {
     public long start,end;
     public int newRandom;
 
-
     public AbstractBenchmark( String name , SerializerConfig serializerConfig  ){
         config = new Config();
         config.setGroupConfig(new GroupConfig(name));

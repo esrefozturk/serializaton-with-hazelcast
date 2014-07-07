@@ -1,5 +1,6 @@
 package com.hazelcast.bytearrayserializer;
 
+import com.hazelcast.mainbenchmark.AbstractCustomer;
 import com.hazelcast.nio.serialization.ByteArraySerializer;
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,9 +10,9 @@ import java.util.Date;
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 23.06.2014.
  */
-public class CustomerByteArraySerializer implements ByteArraySerializer<Customer> {
+public class CustomerByteArraySerializer implements ByteArraySerializer<ByteArraySerializerCustomer> {
 
-    public byte[] write(Customer customer) throws IOException{
+    public byte[] write(ByteArraySerializerCustomer customer) throws IOException{
         //System.out.println("I am writing a Customer");
 
         byte[] result = new byte[]{};
@@ -40,10 +41,10 @@ public class CustomerByteArraySerializer implements ByteArraySerializer<Customer
         return result;
     }
 
-    public Customer read(byte[] bytes) throws IOException{
+    public ByteArraySerializerCustomer read(byte[] bytes) throws IOException{
         //System.out.println("I am reading a Customer");
 
-        Customer customer = new Customer();
+        ByteArraySerializerCustomer customer = new ByteArraySerializerCustomer();
         int from,to,length;
 
         for(from=0,to=0;bytes[to]!=' ';to++);
@@ -53,7 +54,7 @@ public class CustomerByteArraySerializer implements ByteArraySerializer<Customer
         customer.birthday = new Date( Long.parseLong( new String(Arrays.copyOfRange(bytes,from,to))));
 
         for(from=to+1,to=to+1;bytes[to]!=' ';to++);
-        customer.gender = Customer.Sex.valueOf(new String(Arrays.copyOfRange(bytes,from,to)));
+        customer.gender = AbstractCustomer.Sex.valueOf(new String(Arrays.copyOfRange(bytes,from,to)));
 
         for(from=to+1,to=to+1;bytes[to]!=' ';to++);
         customer.emailAddress = new String(Arrays.copyOfRange(bytes,from,to));
@@ -68,7 +69,7 @@ public class CustomerByteArraySerializer implements ByteArraySerializer<Customer
             customer.longArray[i] = Long.parseLong( new String(Arrays.copyOfRange(bytes,from,to)));
         }
 
-        return new Customer();
+        return new ByteArraySerializerCustomer();
 
     }
 

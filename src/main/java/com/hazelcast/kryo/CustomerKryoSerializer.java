@@ -25,7 +25,6 @@ public class CustomerKryoSerializer implements StreamSerializer<KryoCustomer> {
     };
 
     public void write( ObjectDataOutput objectDataOutput, KryoCustomer customer ) throws IOException{
-        //System.out.println("I am writing a Customer");
         Kryo kryo = kryoThreadLocal.get();
         Output output = new Output((OutputStream) objectDataOutput);
         kryo.writeObject( output , customer );
@@ -33,7 +32,6 @@ public class CustomerKryoSerializer implements StreamSerializer<KryoCustomer> {
     }
 
     public KryoCustomer read(ObjectDataInput objectDataInput) throws IOException{
-        //System.out.println("I am reading a Customer");
         Input input = new Input( (InputStream) objectDataInput  );
         return kryoThreadLocal.get().readObject( input , KryoCustomer.class );
     }

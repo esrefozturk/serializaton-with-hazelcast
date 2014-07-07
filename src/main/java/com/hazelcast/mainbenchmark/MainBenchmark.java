@@ -1,6 +1,8 @@
 package com.hazelcast.mainbenchmark;
 
+import com.hazelcast.bytearrayserializer.ByteArraySerialierBenchmark;
 import com.hazelcast.core.Hazelcast;
+import com.hazelcast.dataserializable.DataSerializableBenchmark;
 import com.hazelcast.kryo.KryoBenchmark;
 import com.hazelcast.serializable.SerializableBenchmark;
 
@@ -29,8 +31,8 @@ public class MainBenchmark {
                         serializableBenchmark.getAverageSize()
                 )
         );
-/*
-        com.hazelcast.dataserializable.Benchmark dataserializableBenchmark = new com.hazelcast.dataserializable.Benchmark();
+
+        DataSerializableBenchmark dataserializableBenchmark = new DataSerializableBenchmark();
         results.add( new Result( new String("DataSerializable"),
                         dataserializableBenchmark.getWritePerformance(),
                         dataserializableBenchmark.getReadPerformance(),
@@ -61,7 +63,7 @@ public class MainBenchmark {
                         portableBenchmark.getAverageSize()
                 )
         );
-*/
+
         KryoBenchmark kryoBenchmark = new KryoBenchmark();
         results.add( new Result( new String("Kryo"),
                         kryoBenchmark.getWritePerformance(),
@@ -69,15 +71,15 @@ public class MainBenchmark {
                         kryoBenchmark.getAverageSize()
                 )
         );
-/*
-        com.hazelcast.bytearrayserializer.Benchmark byteArraySerializerBenchmark = new com.hazelcast.bytearrayserializer.Benchmark();
+
+        ByteArraySerialierBenchmark byteArraySerializerBenchmark = new ByteArraySerialierBenchmark();
         results.add( new Result( new String("ByteArraySerializer"),
                         byteArraySerializerBenchmark.getWritePerformance(),
                         byteArraySerializerBenchmark.getReadPerformance(),
                         byteArraySerializerBenchmark.getAverageSize()
                 )
         );
-*/
+
         Hazelcast.shutdownAll();
 
         System.out.println("\n----------------------  RESULTS  -----------------------\n");
