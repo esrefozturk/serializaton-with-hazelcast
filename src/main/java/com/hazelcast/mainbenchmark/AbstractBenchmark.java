@@ -1,4 +1,4 @@
-package com.hazelcast.serializable;
+package com.hazelcast.mainbenchmark;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.GroupConfig;
@@ -7,32 +7,29 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.nio.serialization.SerializationService;
 import com.hazelcast.nio.serialization.SerializationServiceBuilder;
-import java.util.Random;
-import java.util.Date;
-import java.lang.System;
+import com.hazelcast.serializable.SerializableCustomer;
 
-import mainbenchmark.AbstractCustomer;
-import com.hazelcast.mainbenchmark.MainBenchmark;
+import java.util.Date;
+import java.util.Random;
 
 /**
- * Created by Esref Ozturk <esrefozturk93@gmail.com> on 20.06.2014.
+ * Created by Esref Ozturk <esrefozturk93@gmail.com> on 06.07.2014.
  */
 
-public class Benchmark {
-
-    public IMap<Integer, Customer> customerMap;
+public abstract class AbstractBenchmark {
+    public IMap<Integer, AbstractCustomer> customerMap;
     public Config config;
     public HazelcastInstance hazelcastInstance;
-    public Customer customer;
+    public AbstractCustomer customer;
     public SerializationService serializationService;
     public long totalSize;
     public Random random;
     public long start,end;
     public int newRandom;
 
-    public Benchmark(){
+    public AbstractBenchmark( String name ){
         config = new Config();
-        config.setGroupConfig(new GroupConfig("serializable"));
+        config.setGroupConfig(new GroupConfig(name));
         hazelcastInstance = Hazelcast.newHazelcastInstance(config);
         customerMap = hazelcastInstance.getMap("customers");
         serializationService = new SerializationServiceBuilder().setConfig(config.getSerializationConfig()).build();
@@ -41,7 +38,7 @@ public class Benchmark {
 
     public double getReadPerformance(){
         start = System.currentTimeMillis();
-        for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
+        for(int i=0;i< MainBenchmark.TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
             customerMap.get( newRandom );
         }
@@ -53,7 +50,7 @@ public class Benchmark {
         start = System.currentTimeMillis();
         for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
-            customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
+            customer = new SerializableCustomer( "name_" + newRandom , new Date( newRandom ) ,
                     (newRandom%2==0)? AbstractCustomer.Sex.MALE:AbstractCustomer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
             customerMap.set( newRandom , customer );
@@ -66,7 +63,7 @@ public class Benchmark {
         totalSize = 0;
         for(int i=0;i<MainBenchmark.TEST_CASE_COUNT;i++){
             newRandom = random.nextInt(MainBenchmark.MAX_RANDOM);
-            customer = new Customer( "name_" + newRandom , new Date( newRandom ) ,
+            customer = new SerializableCustomer( "name_" + newRandom , new Date( newRandom ) ,
                     (newRandom%2==0)?AbstractCustomer.Sex.MALE:AbstractCustomer.Sex.FEMALE ,
                     "email_" + newRandom , new long[newRandom] );
             totalSize += serializationService.toData(customer).bufferSize();

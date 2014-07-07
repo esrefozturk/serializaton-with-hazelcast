@@ -1,7 +1,7 @@
 package com.hazelcast.mainbenchmark;
 
 import com.hazelcast.core.Hazelcast;
-import com.hazelcast.serializable.Benchmark;
+import com.hazelcast.serializable.SerializableBenchmark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MainBenchmark {
 
         results = new ArrayList<Result>();
 
-        Benchmark serializableBenchmark = new Benchmark();
+        SerializableBenchmark serializableBenchmark = new SerializableBenchmark();
         results.add( new Result( new String("Serializable"),
                         serializableBenchmark.getWritePerformance(),
                         serializableBenchmark.getReadPerformance(),
