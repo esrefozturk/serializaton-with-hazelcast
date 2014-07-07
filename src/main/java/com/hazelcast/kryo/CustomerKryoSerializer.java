@@ -14,17 +14,17 @@ import java.io.InputStream;
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 18.06.2014.
  */
 
-public class CustomerKryoSerializer implements StreamSerializer<Customer> {
+public class CustomerKryoSerializer implements StreamSerializer<KryoCustomer> {
 
     private static ThreadLocal<Kryo>  kryoThreadLocal = new ThreadLocal(){
         protected Kryo initialValue(){
             Kryo kryo = new Kryo();
-            kryo.register(Customer.class);
+            kryo.register(KryoCustomer.class);
             return kryo;
         }
     };
 
-    public void write( ObjectDataOutput objectDataOutput, Customer customer ) throws IOException{
+    public void write( ObjectDataOutput objectDataOutput, KryoCustomer customer ) throws IOException{
         //System.out.println("I am writing a Customer");
         Kryo kryo = kryoThreadLocal.get();
         Output output = new Output((OutputStream) objectDataOutput);
@@ -32,10 +32,10 @@ public class CustomerKryoSerializer implements StreamSerializer<Customer> {
         output.flush();
     }
 
-    public Customer read(ObjectDataInput objectDataInput) throws IOException{
+    public KryoCustomer read(ObjectDataInput objectDataInput) throws IOException{
         //System.out.println("I am reading a Customer");
         Input input = new Input( (InputStream) objectDataInput  );
-        return kryoThreadLocal.get().readObject( input , Customer.class );
+        return kryoThreadLocal.get().readObject( input , KryoCustomer.class );
     }
 
     public int getTypeId(){

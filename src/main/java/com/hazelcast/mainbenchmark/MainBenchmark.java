@@ -1,6 +1,7 @@
 package com.hazelcast.mainbenchmark;
 
 import com.hazelcast.core.Hazelcast;
+import com.hazelcast.kryo.KryoBenchmark;
 import com.hazelcast.serializable.SerializableBenchmark;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class MainBenchmark {
                         serializableBenchmark.getAverageSize()
                 )
         );
-
+/*
         com.hazelcast.dataserializable.Benchmark dataserializableBenchmark = new com.hazelcast.dataserializable.Benchmark();
         results.add( new Result( new String("DataSerializable"),
                         dataserializableBenchmark.getWritePerformance(),
@@ -60,15 +61,15 @@ public class MainBenchmark {
                         portableBenchmark.getAverageSize()
                 )
         );
-
-        com.hazelcast.kryo.Benchmark kryoBenchmark = new com.hazelcast.kryo.Benchmark();
+*/
+        KryoBenchmark kryoBenchmark = new KryoBenchmark();
         results.add( new Result( new String("Kryo"),
                         kryoBenchmark.getWritePerformance(),
                         kryoBenchmark.getReadPerformance(),
                         kryoBenchmark.getAverageSize()
                 )
         );
-
+/*
         com.hazelcast.bytearrayserializer.Benchmark byteArraySerializerBenchmark = new com.hazelcast.bytearrayserializer.Benchmark();
         results.add( new Result( new String("ByteArraySerializer"),
                         byteArraySerializerBenchmark.getWritePerformance(),
@@ -76,7 +77,7 @@ public class MainBenchmark {
                         byteArraySerializerBenchmark.getAverageSize()
                 )
         );
-
+*/
         Hazelcast.shutdownAll();
 
         System.out.println("\n----------------------  RESULTS  -----------------------\n");

@@ -1,6 +1,7 @@
 package com.hazelcast.mainbenchmark;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 05.07.2014.
