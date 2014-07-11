@@ -1,5 +1,6 @@
 package com.hazelcast.dataserializable;
 
+import com.hazelcast.config.Config;
 import com.hazelcast.mainbenchmark.AbstractBenchmark;
 import com.hazelcast.mainbenchmark.MainBenchmark;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 
 public class DataSerializableBenchmark extends AbstractBenchmark {
     public DataSerializableBenchmark(){
-        super("dataserializable",null);
+        super( new Config("dataserializable"));
     }
     public double getWritePerformance(){
         start = System.currentTimeMillis();

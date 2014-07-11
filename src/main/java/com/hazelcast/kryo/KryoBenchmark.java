@@ -1,9 +1,14 @@
 package com.hazelcast.kryo;
 
+import com.hazelcast.bytearrayserializer.ByteArraySerializerCustomer;
+import com.hazelcast.bytearrayserializer.CustomerByteArraySerializer;
+import com.hazelcast.config.Config;
+import com.hazelcast.config.SerializationConfig;
 import com.hazelcast.config.SerializerConfig;
 import com.hazelcast.mainbenchmark.AbstractBenchmark;
 import com.hazelcast.mainbenchmark.MainBenchmark;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,7 +17,11 @@ import java.util.Date;
 
 public class KryoBenchmark extends AbstractBenchmark {
     public KryoBenchmark() {
-        super("serializable", new SerializerConfig().setTypeClass(KryoCustomer.class).setImplementation( new CustomerKryoSerializer() ));
+        super( new Config("kryo").setSerializationConfig( new SerializationConfig().setSerializerConfigs(
+                new ArrayList<SerializerConfig>( ){{
+                    add( new SerializerConfig().setTypeClass(ByteArraySerializerCustomer.class).setImplementation( new CustomerKryoSerializer() ) );
+                }}
+        )) );
     }
 
     public double getWritePerformance(){

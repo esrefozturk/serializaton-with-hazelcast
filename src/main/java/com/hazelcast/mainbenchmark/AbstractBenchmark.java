@@ -26,6 +26,14 @@ public abstract class AbstractBenchmark {
     public long start,end;
     public int newRandom;
 
+    public AbstractBenchmark( Config config  ){
+        hazelcastInstance = Hazelcast.newHazelcastInstance(config);
+        customerMap = hazelcastInstance.getMap("customers");
+        serializationService = new SerializationServiceBuilder().setConfig(config.getSerializationConfig()).build();
+        random = new Random();
+
+    }
+    /*
     public AbstractBenchmark( String name , SerializerConfig serializerConfig  ){
         config = new Config();
         config.setGroupConfig(new GroupConfig(name));
@@ -37,7 +45,7 @@ public abstract class AbstractBenchmark {
         random = new Random();
 
     }
-
+    */
     public double getReadPerformance(){
         start = System.currentTimeMillis();
         for(int i=0;i< MainBenchmark.TEST_CASE_COUNT;i++){

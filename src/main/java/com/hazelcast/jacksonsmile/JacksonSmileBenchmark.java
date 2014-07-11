@@ -1,9 +1,14 @@
 package com.hazelcast.jacksonsmile;
 
+import com.hazelcast.bytearrayserializer.ByteArraySerializerCustomer;
+import com.hazelcast.config.Config;
+import com.hazelcast.config.SerializationConfig;
 import com.hazelcast.config.SerializerConfig;
+import com.hazelcast.kryo.CustomerKryoSerializer;
 import com.hazelcast.mainbenchmark.AbstractBenchmark;
 import com.hazelcast.mainbenchmark.MainBenchmark;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -11,7 +16,11 @@ import java.util.Date;
  */
 public class JacksonSmileBenchmark extends AbstractBenchmark {
     public JacksonSmileBenchmark(){
-        super("jacksonsmile",new SerializerConfig().setTypeClass(JacksonSmileCustomer.class).setImplementation( new CustomerJacksonSmileSerializer() ));
+        super( new Config("jacksonsmile").setSerializationConfig(new SerializationConfig().setSerializerConfigs(
+                new ArrayList<SerializerConfig>() {{
+                    add(new SerializerConfig().setTypeClass(ByteArraySerializerCustomer.class).setImplementation(new CustomerJacksonSmileSerializer()));
+                }}
+        )) );
     }
     public double getWritePerformance(){
         start = System.currentTimeMillis();
