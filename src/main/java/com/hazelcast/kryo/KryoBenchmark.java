@@ -9,6 +9,7 @@ import com.hazelcast.mainbenchmark.AbstractBenchmark;
 import com.hazelcast.mainbenchmark.MainBenchmark;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -18,9 +19,7 @@ import java.util.Date;
 public class KryoBenchmark extends AbstractBenchmark {
     public KryoBenchmark() {
         super( new Config("kryo").setSerializationConfig( new SerializationConfig().setSerializerConfigs(
-                new ArrayList<SerializerConfig>( ){{
-                    add( new SerializerConfig().setTypeClass(ByteArraySerializerCustomer.class).setImplementation( new CustomerKryoSerializer() ) );
-                }}
+                new ArrayList<SerializerConfig>(Arrays.asList( new SerializerConfig().setTypeClass(KryoCustomer.class).setImplementation( new CustomerKryoSerializer() ) ) )
         )) );
     }
 

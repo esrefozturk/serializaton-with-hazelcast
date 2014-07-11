@@ -16,7 +16,7 @@ import java.util.List;
 
 public class MainBenchmark {
 
-    public static int TEST_CASE_COUNT=5;
+    public static int TEST_CASE_COUNT=1000;
     public static int MAX_RANDOM = 100;
     public static List<Result> results;
 
