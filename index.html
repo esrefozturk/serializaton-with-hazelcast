@@ -1,39 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Customserialization by hazelcastInternsSummer14</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Serializaton with Hazelcast by esrefozturk</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Customserialization</h1>
-        <p class="header">Custom Serialization with Hazelcast</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/hazelcastInternsSummer14/customSerialization/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/hazelcastInternsSummer14/customSerialization/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/hazelcastInternsSummer14/customSerialization">View On GitHub</a></li>
-        </ul>
+    <header>
+      <div class="container">
+        <h1>Serializaton with Hazelcast</h1>
+        <h2>Implementations and benchmarks of some serialization methods with hazelcast</h2>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/hazelcastInternsSummer14">hazelcastInternsSummer14</a></p>
+        <section id="downloads">
+          <a href="https://github.com/esrefozturk/serializaton-with-hazelcast/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/esrefozturk/serializaton-with-hazelcast/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/esrefozturk/serializaton-with-hazelcast" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
-
-      </header>
-      <section>
+    <div class="container">
+      <section id="main_content">
         <h1>
-<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>ABOUT</h1>
+<a name="serialization-with-hazelcast" class="anchor" href="#serialization-with-hazelcast"><span class="octicon octicon-link"></span></a>Serialization with Hazelcast</h1>
 
-<p>This project is prepared to serve as a sample application for Hazelcast, the leading open source in-memory data grid . Here, Hazelcast's use case is Custom Serialization.</p>
+<p>In this repository, you can find sample implementations and benchmarks of some serialization methods with hazelcast. You can also find detailed explanation at <a href="http://hazelcast.org/">http://hazelcast.org/</a></p>
 
 <h2>
 <a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
@@ -43,28 +41,18 @@
 <h2>
 <a name="how-to-run-sample-application" class="anchor" href="#how-to-run-sample-application"><span class="octicon octicon-link"></span></a>How to Run Sample Application</h2>
 
-<p>1) clone the repository to your local using the following command:</p>
-
-<pre><code>git clone https://github.com/hazelcastInternsSummer14/customSerialization.git
+<ul>
+<li>Compile the application with: </li>
+</ul><pre><code>mvn compile
 </code></pre>
 
-<p>2) go to customSerialization folder</p>
-
-<p>3) run the code: </p>
-
-<pre><code>mvn compile
-</code></pre>
-
-<p>4) run the code:</p>
-
-<pre><code>mvn exec:java -Dexec.mainClass="mainbenchmark.MainBenchmark"
+<ul>
+<li>Execute it with:</li>
+</ul><pre><code>mvn exec:java -Dexec.mainClass="mainbenchmark.MainBenchmark"
 </code></pre>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+    
   </body>
 </html>
