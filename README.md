@@ -10,5 +10,5 @@ mvn compile
 ```
 - Execute it with:
 ```
-mvn exec:java -Dexec.mainClass="mainbenchmark.MainBenchmark"
+mvn exec:java -Dexec.mainClass="com.hazelcast.mainbenchmark.MainBenchmark"
 ```
