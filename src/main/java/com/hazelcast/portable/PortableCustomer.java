@@ -5,29 +5,19 @@ import com.hazelcast.nio.serialization.PortableWriter;
 import com.hazelcast.nio.serialization.PortableReader;
 import java.util.Date;
 import java.io.IOException;
+import com.hazelcast.mainbenchmark.AbstractCustomer;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
  */
 
-public class Customer implements Portable
+public class PortableCustomer extends AbstractCustomer implements Portable
 {
-    public enum Sex { MALE, FEMALE }
-    public String name;
-    Date birthday;
-    Sex gender;
-    String emailAddress;
-    long[] longArray;
+    PortableCustomer() {}
 
-    Customer() {}
-
-    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
+    PortableCustomer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
     {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.emailAddress = emailAddress;
-        this.longArray = longArray;
+        super(name, birthday, gender, emailAddress, longArray);
     }
 
     public int getFactoryId(){

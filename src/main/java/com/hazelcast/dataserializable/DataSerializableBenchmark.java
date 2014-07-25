@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Esref Ozturk <esrefozturk93@gmail.com> on 07.07.2014.
  */
 
-public class DataSerializableBenchmark extends AbstractBenchmark {
+    public class DataSerializableBenchmark extends AbstractBenchmark {
     public DataSerializableBenchmark(){
         super( new Config("dataserializable"));
     }

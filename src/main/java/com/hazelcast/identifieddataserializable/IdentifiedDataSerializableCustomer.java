@@ -1,5 +1,6 @@
 package com.hazelcast.identifieddataserializable;
 
+import com.hazelcast.mainbenchmark.AbstractCustomer;
 import com.hazelcast.nio.ObjectDataInput;
 import com.hazelcast.nio.ObjectDataOutput;
 import com.hazelcast.nio.serialization.IdentifiedDataSerializable;
@@ -10,24 +11,13 @@ import java.util.Date;
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
  */
 
-public class Customer implements IdentifiedDataSerializable
+public class IdentifiedDataSerializableCustomer extends AbstractCustomer implements IdentifiedDataSerializable
 {
-    public enum Sex { MALE, FEMALE }
-    String name;
-    Date birthday;
-    Sex gender;
-    String emailAddress;
-    long[] longArray;
+    IdentifiedDataSerializableCustomer() {}
 
-    Customer() {}
-
-    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
+    IdentifiedDataSerializableCustomer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
     {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.emailAddress = emailAddress;
-        this.longArray = longArray;
+        super(name, birthday, gender, emailAddress, longArray);
     }
 
     public int getFactoryId(){

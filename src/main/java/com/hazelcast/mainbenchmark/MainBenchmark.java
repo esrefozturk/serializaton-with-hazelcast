@@ -3,8 +3,11 @@ package com.hazelcast.mainbenchmark;
 import com.hazelcast.bytearrayserializer.ByteArraySerializerBenchmark;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.dataserializable.DataSerializableBenchmark;
+import com.hazelcast.externalizable.ExternalizableBenchmark;
+import com.hazelcast.identifieddataserializable.IdentifiedDataSerializableBenchmark;
 import com.hazelcast.jacksonsmile.JacksonSmileBenchmark;
 import com.hazelcast.kryo.KryoBenchmark;
+import com.hazelcast.portable.PortableBenchmark;
 import com.hazelcast.serializable.SerializableBenchmark;
 
 import java.util.ArrayList;
@@ -43,7 +46,7 @@ public class MainBenchmark {
         );
         Hazelcast.shutdownAll();
 
-        com.hazelcast.identifieddataserializable.Benchmark identifiedDataSerializableBenchmark = new com.hazelcast.identifieddataserializable.Benchmark();
+        IdentifiedDataSerializableBenchmark identifiedDataSerializableBenchmark = new IdentifiedDataSerializableBenchmark();
         results.add( new Result( new String("IdentifiedDataSerializable"),
                         identifiedDataSerializableBenchmark.getWritePerformance(),
                         identifiedDataSerializableBenchmark.getReadPerformance(),
@@ -52,7 +55,7 @@ public class MainBenchmark {
         );
         Hazelcast.shutdownAll();
 
-        com.hazelcast.externalizable.Benchmark externalizableBenchmark = new com.hazelcast.externalizable.Benchmark();
+        ExternalizableBenchmark externalizableBenchmark = new ExternalizableBenchmark();
         results.add( new Result( new String("Externalizable"),
                         externalizableBenchmark.getWritePerformance(),
                         externalizableBenchmark.getReadPerformance(),
@@ -61,7 +64,7 @@ public class MainBenchmark {
         );
         Hazelcast.shutdownAll();
 
-        com.hazelcast.portable.Benchmark portableBenchmark = new com.hazelcast.portable.Benchmark();
+        PortableBenchmark portableBenchmark = new PortableBenchmark();
         results.add( new Result( new String("Portable"),
                         portableBenchmark.getWritePerformance(),
                         portableBenchmark.getReadPerformance(),

@@ -6,29 +6,19 @@ import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
 import java.lang.ClassNotFoundException;
+import com.hazelcast.mainbenchmark.AbstractCustomer;
 
 /**
  * Created by Mustafa Orkun Acar <mustafaorkunacar@gmail.com> on 18.06.2014.
  */
 
-public class Customer implements Externalizable
+public class ExternalizableCustomer extends AbstractCustomer implements Externalizable
 {
-    public enum Sex { MALE, FEMALE }
-    String name;
-    Date birthday;
-    Sex gender;
-    String emailAddress;
-    long[] longArray;
+    ExternalizableCustomer() {}
 
-    Customer() {}
-
-    Customer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
+    ExternalizableCustomer(String name, Date birthday, Sex gender, String emailAddress, long[] longArray)
     {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.emailAddress = emailAddress;
-        this.longArray = longArray;
+        super(name, birthday, gender, emailAddress, longArray);
     }
 
     public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException
