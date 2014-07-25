@@ -15,7 +15,7 @@ public class PortableBenchmark extends AbstractBenchmark
 
     public PortableBenchmark()
     {
-        super(new Config("portable").setSerializationConfig(new SerializationConfig().addPortableFactory(1, new PortableCustomerFactory()).addClassDefinition(new ClassDefinitionBuilder(1, 1).addUTFField("name").addLongField("birthday  ").addUTFField("gender").addUTFField("emailAddress").addIntField("size").addLongArrayField("longArray").build())));
+        super(new Config("portable").setSerializationConfig(new SerializationConfig().addPortableFactory(1, new PortableCustomerFactory()).addClassDefinition(new ClassDefinitionBuilder(1, 1).addUTFField("name").addLongField("birthday").addUTFField("gender").addUTFField("emailAddress").addIntField("size").addLongArrayField("longArray").build())));
     }
 
     public double getWritePerformance()
